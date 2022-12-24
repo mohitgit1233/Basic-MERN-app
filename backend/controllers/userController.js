@@ -57,8 +57,11 @@ const loginUser = asyncHandler( async (req,res) =>{
 
     if(user && (await bcrypt.compare(password,user.password))){
         res.status(201).json({
-            message:'login sucess',
+            _id:user.id,
+            name:user.name,
+            email:user.email,
             token: generateToken(user._id)
+            
         })
     }else{
         res.status(400)
@@ -72,15 +75,10 @@ const loginUser = asyncHandler( async (req,res) =>{
 
 //GET User data Private
 const getUser = asyncHandler( async (req,res) =>{
-    const {_id,name,email,password} = await User.findById(req.user.id)
+ 
 
-    res.status(200).json({
-        id:_id,
-        name,
-        email,
-       password
-    })
-    res.json({message:'User data token'})
+    res.status(200).json(req.user)
+  
 })
 
 
