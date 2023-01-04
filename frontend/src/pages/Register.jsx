@@ -3,6 +3,19 @@ import {useSelector,useDispatch} from 'react-redux'
 import{useNavigate} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import {register, reset} from '../features/auth/authSlice'
+import axios from 'axios'
+
+const API_URL = '/api/email/'
+
+const sendOTP = async () => {
+  alert('sent')
+  const response = await axios.post(API_URL)
+  alert('sent1')
+  return response.data
+ 
+};
+
+
 
 function Register() {
 
@@ -125,6 +138,7 @@ function Register() {
             </button>
           </div>
         </form>
+        <button onClick={sendOTP} >Send test mail</button>
       </section>
     </>
   )

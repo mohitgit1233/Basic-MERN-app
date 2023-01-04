@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import GoalForm from '../components/GoalForm'
 import GoalItem from '../components/GoalItem'
 
+
+
 import { getGoals, reset } from '../features/goals/goalSlice'
 
 function Dashboard() {
@@ -43,7 +45,7 @@ function Dashboard() {
       </section>
 
       <GoalForm />
-
+   
       <section className='content'>
         {goals.length > 0 ? (
           <div className='goals'>
